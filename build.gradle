@@ -111,6 +111,8 @@ subprojects { subproj ->
         if (subproj.publishJars.toBoolean()) {
             subproj.apply from: rootProject.file('gradle/docs.gradle')
         }
+
+        subproj.test.testLogging { exceptionFormat 'full' }
     }
 }
 
