@@ -4,8 +4,8 @@
 
 image:http://img.shields.io/travis/griffon-plugins/griffon-crystalicons-plugin/master.svg["Build Status", link="https://travis-ci.org/griffon-plugins/griffon-crystalicons-plugin"]
 image:http://img.shields.io/coveralls/griffon-plugins/griffon-crystalicons-plugin/master.svg["Coverage Status", link="https://coveralls.io/r/griffon-plugins/griffon-crystalicons-plugin"]
-image:http://img.shields.io/:semver-{version}-red.svg["Semantic Versioning", link="http://semver.org"]
-image:http://img.shields.io/badge/license-ASF2-red.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
+image:http://img.shields.io/:semver-{version}-blue.svg["Semantic Versioning", link="http://semver.org"]
+image:http://img.shields.io/badge/license-ASF2-blue.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
 
 ---
 
