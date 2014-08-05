@@ -1,0 +1,8 @@
+griffon.builder.javafx
+griffon.builder.swing
+griffon.builder.swing.factory
+griffon.javafx.support.crystalicons
+griffon.plugins.crystalicons
+griffon.swing.support.crystalicons
+org.codehaus.griffon.runtime.javafx.crystalicons
+org.codehaus.griffon.runtime.swing.crystalicons
