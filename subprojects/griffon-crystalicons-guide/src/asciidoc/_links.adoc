@@ -1,0 +1,4 @@
+
+:link_crystalicons: link:http://everaldo.com[Everaldo's Crystal icon set, window="_blank"]
+:api_link_crystalicon_javafx: link:api/griffon/javafx/support/crystalicons/CrystalIcon.html[griffon.javafx.support.crystalicons.CrystalIcon, window="_blank"]
+:api_link_crystalicon_swing: link:api/griffon/swing/support/crystalicons/CrystalIcon.html[griffon.swing.support.crystalicons.CrystalIcon, window="_blank"]

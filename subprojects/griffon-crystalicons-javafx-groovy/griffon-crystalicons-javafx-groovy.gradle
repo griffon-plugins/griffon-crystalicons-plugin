@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+apply from: rootProject.file('gradle/code-coverage.gradle')
+apply from: rootProject.file('gradle/javafx.gradle')
+
+dependencies {
+    compileOnly project.files(project.jfxrtLocation)
+    compileOnly "org.codehaus.griffon:griffon-core-compile:${griffonVersion}"
+
+    compile project(':griffon-crystalicons-javafx')
+    compile "org.codehaus.griffon:griffon-javafx-groovy:$griffonVersion"
+
+    testCompile "org.codehaus.griffon:griffon-core-test:$griffonVersion"
+    testCompile project.files(project.jfxrtLocation)
+
+    testRuntime "org.codehaus.griffon:griffon-guice:$griffonVersion"
+    testRuntime 'org.slf4j:slf4j-simple:1.7.7'
+}

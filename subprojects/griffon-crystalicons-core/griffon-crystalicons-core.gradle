@@ -1,0 +1,8 @@
+apply plugin: 'groovy'
+apply from: rootProject.file('gradle/code-coverage.gradle')
+
+dependencies {
+    compile "org.codehaus.griffon:griffon-core:$griffonVersion"
+}
+
+compileGroovy.enabled = false

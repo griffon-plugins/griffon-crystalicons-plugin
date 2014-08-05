@@ -1,0 +1,56 @@
+
+[[_modules]]
+= Modules
+:subproject-base: {rootdir}/subprojects/griffon-crystalicons-
+:java-source: /src/main/java/
+:groovy-source: /src/main/groovy/
+:package-base: org/codehaus/griffon/runtime/
+:numbered:
+
+The following sections display all bindings per module. Use this information to
+successfully override a binding on your own modules or to troubleshoot a module
+binding if the wrong type has been applied by the Griffon runtime.
+
+== JavaFX
+
+Module name: +crystalicons-javafx-groovy+
+
+Depends on: +javafx-groovy+
+
+[source,java,options="nowrap"]
+----
+include::{subproject-base}javafx-groovy{groovy-source}{package-base}/javafx/crystalicons/CrystalIconsJavaFXGroovyModule.java[tags=bindings,indent=0]
+----
+
+The following nodes will become available on a GroovyFX View
+
+[options="2*,header"]
+|===
+| Node     | Type
+| crystalIcon | +{api_link_crystalicon_javafx}+
+|===
+
+== Swing
+
+Module name: +crystalicons-swing-groovy+
+
+Depends on: +swing-groovy+
+
+[source,java,options="nowrap"]
+----
+include::{subproject-base}swing-groovy{java-source}{package-base}/swing/crystalicons/CrystalIconsSwingGroovyModule.java[tags=bindings,indent=0]
+----
+
+The following nodes will become available on a GroovyFX View
+
+[options="2*,header"]
+|===
+| Node     | Type
+| crystalIcon | +{api_link_crystalicon_swing}+
+|===
+
+Both `crystalIcon` Nodes support the following properties
+
+icon:: The name of the icon, such as +actions:exec+ or +fileystems:folder+.
+size:: The size of the icon. One of +16+, +22+, +32+.
+

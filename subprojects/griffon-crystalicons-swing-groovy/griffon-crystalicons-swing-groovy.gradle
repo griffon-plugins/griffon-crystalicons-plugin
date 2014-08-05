@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+apply from: rootProject.file('gradle/code-coverage.gradle')
+
+dependencies {
+    compileOnly "org.codehaus.griffon:griffon-core-compile:${griffonVersion}"
+
+    compile project(':griffon-crystalicons-swing')
+    compile "org.codehaus.griffon:griffon-swing-groovy:$griffonVersion"
+
+    testCompile "org.codehaus.griffon:griffon-core-test:$griffonVersion"
+    testRuntime "org.codehaus.griffon:griffon-guice:$griffonVersion"
+    testRuntime 'org.slf4j:slf4j-simple:1.7.7'
+}
+
+compileGroovy.enabled = false
