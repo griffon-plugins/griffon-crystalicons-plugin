@@ -34,12 +34,6 @@ class CrystalIconSpec extends Specification {
         thrown(IllegalArgumentException)
 
         where:
-        arg           | _
-        null          | _
-        ''            | _
-        ' '           | _
-        'foo'         | _
-        'foo:foo'     | _
-        'actions:foo' | _
+        arg << [null, '', ' ', 'foo', 'foo:foo', 'actions:foo']
     }
 }
