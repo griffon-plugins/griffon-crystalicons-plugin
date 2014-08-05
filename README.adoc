@@ -2,9 +2,10 @@
 :version: 1.0.0.SNAPSHOT
 :linkattrs:
 
-image:https://travis-ci.org/griffon-plugins/griffon-crystalicons-plugin.png?branch=master["Build Status", link="https://travis-ci.org/griffon-plugins/griffon-crystalicons-plugin"]
-image:https://coveralls.io/repos/griffon-plugins/griffon-crystalicons-plugin/badge.png["Coverage Status", link="https://coveralls.io/r/griffon-plugins/griffon-crystalicons-plugin"]
+image:http://img.shields.io/travis/griffon-plugins/griffon-crystalicons-plugin/master.svg["Build Status", link="https://travis-ci.org/griffon-plugins/griffon-crystalicons-plugin"]
+image:http://img.shields.io/coveralls/griffon-plugins/griffon-crystalicons-plugin/master.svg["Coverage Status", link="https://coveralls.io/r/griffon-plugins/griffon-crystalicons-plugin"]
 image:http://img.shields.io/:semver-{version}-red.svg["Semantic Versioning", link="http://semver.org"]
+image:http://img.shields.io/badge/license-ASF2-red.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
 
 ---
 

@@ -21,7 +21,7 @@ import spock.lang.Specification
  * @author Andres Almiray
  */
 class CrystalIconSpec extends Specification {
-    def 'Invalid CrystalIcon arguments'() {
+    def 'Invalid CrystalIcon arguments'(String arg) {
         when:
         new CrystalIcon(arg)
 
