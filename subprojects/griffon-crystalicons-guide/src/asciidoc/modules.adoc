@@ -22,7 +22,7 @@ Depends on: +javafx-groovy+
 include::{subproject-base}javafx-groovy{groovy-source}{package-base}/javafx/crystalicons/CrystalIconsJavaFXGroovyModule.java[tags=bindings,indent=0]
 ----
 
-The following nodes will become available on a GroovyFX View
+The following nodes will become available on a Groovy View
 
 [options="2*,header"]
 |===
@@ -41,7 +41,7 @@ Depends on: +swing-groovy+
 include::{subproject-base}swing-groovy{java-source}{package-base}/swing/crystalicons/CrystalIconsSwingGroovyModule.java[tags=bindings,indent=0]
 ----
 
-The following nodes will become available on a GroovyFX View
+The following nodes will become available on a Groovy View
 
 [options="2*,header"]
 |===

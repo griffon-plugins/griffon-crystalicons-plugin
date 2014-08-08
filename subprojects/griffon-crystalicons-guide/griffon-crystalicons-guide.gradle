@@ -125,13 +125,13 @@ java2html {
     }
 
     overview {
-        srcDirs = files("$buildDir/java2html")
-        destDir = file("$buildDir/java2html")
-        windowTitle = "Griffon Crystal Icons Plugin $version"
-        docTitle = "Griffon Crystal Icons Plugin $version"
+        srcDirs        = files("$buildDir/java2html")
+        destDir        = file("$buildDir/java2html")
+        windowTitle    = "Griffon Crystal Icons Plugin $version"
+        docTitle       = "Griffon Crystal Icons Plugin $version"
         docDescription = "Griffon Crystal Icons Plugin $version"
-        icon = file('src/javadoc/resources/img/griffon.ico')
-        stylesheet = file('src/javadoc/resources/css/stylesheet.css')
+        icon           = file('src/javadoc/resources/img/griffon.ico')
+        stylesheet     = file('src/javadoc/resources/css/stylesheet.css')
     }
 }
 
@@ -152,7 +152,7 @@ task generateIconCheatSheet << {
     }
 
     String document = '''
-    [[icon_sheat_cheet]]
+    [[icon_cheat_cheet]]
     = Icon Cheat Sheet
 
     The following tables show all available icons. Table names stand for categories. Note that

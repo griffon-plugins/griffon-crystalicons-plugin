@@ -67,7 +67,7 @@ bintray {
         name = project.name
         desc = project.projectDescription
         licenses = ['Apache-2.0']
-        labels = ['griffon', 'plugin', 'icons', 'swing', 'javafx', 'crystal']
+        labels = ((rootProject.projectLabels.split(',') + project.projectLabels.split(',')) as List).unique()
         websiteUrl = project.projectWebsiteUrl
         issueTrackerUrl = project.projectIssueTrackerUrl
         vcsUrl = project.projectVcsUrl
