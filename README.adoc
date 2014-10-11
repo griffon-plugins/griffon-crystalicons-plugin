@@ -1,13 +1,11 @@
 = griffon-crystalicons-plugin
-:version: 1.0.0.SNAPSHOT
 :linkattrs:
 :project-name: griffon-crystalicons-plugin
 
 image:http://img.shields.io/travis/griffon-plugins/{project-name}/master.svg["Build Status", link="https://travis-ci.org/griffon-plugins/{project-name}"]
 image:http://img.shields.io/coveralls/griffon-plugins/{project-name}/master.svg["Coverage Status", link="https://coveralls.io/r/griffon-plugins/{project-name}"]
-image:http://img.shields.io/:semver-{version}-blue.svg["Semantic Versioning", link="http://semver.org"]
 image:http://img.shields.io/badge/license-ASF2-blue.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
-image:http://img.shields.io/badge/download-latest-bb00bb.svg[link="https://bintray.com/griffon/griffon-plugins/{project-name}/_latestVersion"]
+image:https://api.bintray.com/packages/griffon/griffon-plugins/{project-name}/images/download.svg[link="https://bintray.com/griffon/griffon-plugins/{project-name}/_latestVersion"]
 
 ---
 

@@ -7,7 +7,7 @@ script:
     - TERM=dumb ./gradlew build jacocoTestReport jacocoRootReport
 
 jdk:
-    - oraclejdk7
+    - oraclejdk8
 
 before_install:
     - export DISPLAY=:99.0

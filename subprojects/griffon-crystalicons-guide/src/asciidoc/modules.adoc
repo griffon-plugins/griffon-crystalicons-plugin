@@ -13,9 +13,9 @@ binding if the wrong type has been applied by the Griffon runtime.
 
 == JavaFX
 
-Module name: +crystalicons-javafx-groovy+
+Module name: `crystalicons-javafx-groovy`
 
-Depends on: +javafx-groovy+
+Depends on: `javafx-groovy`
 
 [source,java,options="nowrap"]
 ----
@@ -27,14 +27,14 @@ The following nodes will become available on a Groovy View
 [options="2*,header"]
 |===
 | Node     | Type
-| crystalIcon | +{api_link_crystalicon_javafx}+
+| crystalIcon | `{api_link_crystalicon_javafx}`
 |===
 
 == Swing
 
-Module name: +crystalicons-swing-groovy+
+Module name: `crystalicons-swing-groovy`
 
-Depends on: +swing-groovy+
+Depends on: `swing-groovy`
 
 [source,java,options="nowrap"]
 ----
@@ -46,11 +46,11 @@ The following nodes will become available on a Groovy View
 [options="2*,header"]
 |===
 | Node     | Type
-| crystalIcon | +{api_link_crystalicon_swing}+
+| crystalIcon | `{api_link_crystalicon_swing}`
 |===
 
 Both `crystalIcon` Nodes support the following properties
 
-icon:: The name of the icon, such as +actions:exec+ or +fileystems:folder+.
-size:: The size of the icon. One of +16+, +22+, +32+.
+icon:: The name of the icon, such as `actions:exec` or `fileystems:folder`.
+size:: The size of the icon. One of `16`, `22`, `32`.
 

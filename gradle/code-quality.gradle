@@ -1,12 +1,13 @@
-apply plugin: 'findbugs'
+//apply plugin: 'findbugs'
 apply plugin: 'jdepend'
 apply plugin: 'com.github.hierynomus.license'
 
 def configDir = new File(buildscript.sourceFile.parentFile.parentFile, 'config')
 ext.checkstyleConfigDir = "$configDir/checkstyle"
 
+/*
 findbugs {
-    toolVersion = '2.0.3'
+    toolVersion = '3.0.0'
     sourceSets = [sourceSets.main]
     ignoreFailures = true
     reportsDir = file("$project.buildDir/reports/findbugs")
@@ -27,6 +28,7 @@ findbugsTest {
         html.enabled = true
     }
 }
+*/
 
 jdepend {
     toolVersion = '2.9.1'

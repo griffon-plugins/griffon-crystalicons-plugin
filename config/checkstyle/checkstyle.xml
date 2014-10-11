@@ -15,7 +15,7 @@
         <module name="AvoidNestedBlocks"/>
 
         <!-- Braces -->
-        <!--<module name="NatcowBraces"/>-->
+        <!--<module name="NeedBraces"/>-->
 
         <!-- Coding -->
         <module name="CovariantEquals"/>
