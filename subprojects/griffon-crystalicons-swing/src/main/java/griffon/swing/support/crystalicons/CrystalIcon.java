@@ -19,16 +19,25 @@ import griffon.plugins.crystalicons.Crystal;
 
 import javax.annotation.Nonnull;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 import java.net.URL;
 
+import static griffon.plugins.crystalicons.Crystal.invalidDescription;
+import static griffon.plugins.crystalicons.Crystal.requireValidSize;
+import static griffon.util.GriffonNameUtils.requireNonBlank;
 import static java.util.Objects.requireNonNull;
 
 /**
  * @author Andres Almiray
  */
 public class CrystalIcon extends ImageIcon {
-    private final Crystal crystal;
-    private final int size;
+    private static final String ERROR_CRYSTAL_NULL = "Argument 'crystal' must not be null";
+    private Crystal crystal;
+    private int size;
+
+    public CrystalIcon() {
+        this(Crystal.findByDescription("actions:bookmark"));
+    }
 
     public CrystalIcon(@Nonnull Crystal crystal) {
         this(crystal, 16);
@@ -36,17 +45,18 @@ public class CrystalIcon extends ImageIcon {
 
     public CrystalIcon(@Nonnull Crystal crystal, int size) {
         super(toURL(crystal, size));
-        this.crystal = crystal;
+        this.crystal = requireNonNull(crystal, ERROR_CRYSTAL_NULL);
         this.size = size;
     }
 
     public CrystalIcon(@Nonnull String description) {
         this(Crystal.findByDescription(description));
+        setCrystal(description);
     }
 
     @Nonnull
     private static URL toURL(@Nonnull Crystal crystal, int size) {
-        requireNonNull(crystal, "Argument 'crystal' must not be null.");
+        requireNonNull(crystal, ERROR_CRYSTAL_NULL);
         String resource = crystal.asResource(size);
         URL url = Thread.currentThread().getContextClassLoader().getResource(resource);
         if (url == null) {
@@ -60,7 +70,36 @@ public class CrystalIcon extends ImageIcon {
         return crystal;
     }
 
+    public void setCrystal(@Nonnull Crystal crystal) {
+        this.crystal = requireNonNull(crystal, ERROR_CRYSTAL_NULL);
+        setImage(Toolkit.getDefaultToolkit().getImage(toURL(crystal, size)));
+    }
+
+    public void setCrystal(@Nonnull String description) {
+        requireNonBlank(description, "Argument 'description' must not be blank");
+
+        String[] parts = description.split(":");
+        if (parts.length == 3) {
+            try {
+                int s = Integer.parseInt(parts[2]);
+                size = requireValidSize(s);
+            } catch (NumberFormatException e) {
+                throw invalidDescription(description, e);
+            }
+        } else if (size == 0) {
+            size = 16;
+        }
+
+        crystal = Crystal.findByDescription(description);
+        setImage(Toolkit.getDefaultToolkit().getImage(toURL(crystal, size)));
+    }
+
     public int getSize() {
         return size;
+    }
+
+    public void setSize(int size) {
+        this.size = requireValidSize(size);
+        setImage(Toolkit.getDefaultToolkit().getImage(toURL(crystal, size)));
     }
 }

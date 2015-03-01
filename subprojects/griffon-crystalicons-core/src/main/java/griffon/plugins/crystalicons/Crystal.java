@@ -19,11 +19,13 @@ import javax.annotation.Nonnull;
 
 import static griffon.util.GriffonClassUtils.requireState;
 import static griffon.util.GriffonNameUtils.isBlank;
+import static griffon.util.GriffonNameUtils.requireNonBlank;
 
 /**
  * @author Andres Almiray
  */
 public final class Crystal {
+    private static final String ERROR_DESCRIPTION_BLANK = "Argument 'description' must not be blank";
     private final String category;
     private final String description;
 
@@ -49,8 +51,26 @@ public final class Crystal {
 
     @Nonnull
     public String asResource(int size) {
-        requireState(size == 16 || size == 24 || size == 32, "Argument 'size' must be one of [16, 22, 32].");
+        requireValidSize(size);
         return "com/everaldo/crystal/" + size + "x" + size + "/" + category + "/" + description + ".png";
+    }
+
+    @Nonnull
+    public static String asResource(@Nonnull String description) {
+        int size = 16;
+        checkDescription(description);
+
+        String[] parts = description.split(":");
+        if (parts.length == 3) {
+            try {
+                size = Integer.parseInt(parts[2]);
+            } catch (NumberFormatException e) {
+                throw invalidDescription(description, e);
+            }
+        }
+
+        Crystal crystal = findByDescription(description, size);
+        return crystal.asResource(size);
     }
 
     public boolean equals(Object o) {
@@ -67,17 +87,24 @@ public final class Crystal {
 
     @Nonnull
     public static Crystal findByDescription(@Nonnull String description) {
-        if (isBlank(description)) {
-            throw new IllegalArgumentException("Description " + description + " is not a valid Crystal icon description");
-        }
-        if (!description.contains(":")) {
-            throw new IllegalArgumentException("Description " + description + " is not a valid Crystal icon description");
-        }
+        checkDescription(description);
 
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
         String[] parts = description.split(":");
         Crystal icon = new Crystal(parts[0].toLowerCase(), parts[1].toLowerCase());
+        if (parts.length == 3) {
+            int size = 16;
+            try {
+                size = Integer.parseInt(parts[2]);
+            } catch (NumberFormatException e) {
+                throw invalidDescription(description, e);
+            }
+            if (classLoader.getResource(icon.asResource(size)) != null) {
+                return icon;
+            }
+        }
+
         if (classLoader.getResource(icon.asResource(16)) != null) {
             return icon;
         } else if (classLoader.getResource(icon.asResource(24)) != null) {
@@ -86,6 +113,47 @@ public final class Crystal {
             return icon;
         }
 
-        throw new IllegalArgumentException("Description " + description + " is not a a valid Crystal icon description");
+        throw invalidDescription(description);
+    }
+
+    @Nonnull
+    public static Crystal findByDescription(@Nonnull String description, int size) {
+        checkDescription(description);
+
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+        String[] parts = description.split(":");
+        Crystal icon = new Crystal(parts[0].toLowerCase(), parts[1].toLowerCase());
+        if (classLoader.getResource(icon.asResource(size)) != null) {
+            return icon;
+        }
+
+        throw invalidDescription(description);
+    }
+
+    public static int requireValidSize(int size) {
+        requireState(size == 16 || size == 24 || size == 32, "Argument 'size' must be one of [16, 24, 32].");
+        return size;
+    }
+
+    private static void checkDescription(String description) {
+        if (isBlank(description)) {
+            throw new IllegalArgumentException("Description is blank");
+        }
+        if (!description.contains(":")) {
+            throw invalidDescription(description);
+        }
+    }
+
+    @Nonnull
+    public static IllegalArgumentException invalidDescription(@Nonnull String description) {
+        requireNonBlank(description, ERROR_DESCRIPTION_BLANK);
+        throw new IllegalArgumentException("Description " + description + " is not a valid Crystal icon description");
+    }
+
+    @Nonnull
+    public static IllegalArgumentException invalidDescription(@Nonnull String description, Exception e) {
+        requireNonBlank(description, ERROR_DESCRIPTION_BLANK);
+        throw new IllegalArgumentException("Description " + description + " is not a valid Crystal icon description", e);
     }
 }

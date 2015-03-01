@@ -1,0 +1,39 @@
+
+[[_usage]]
+= Usage
+
+== Swing
+
+The `griffon-crystal-swing:{project-version}` JAR provides a new Icon class: `{api_link_crystalicon_swing}`.
+You may use this class with any Swing component that supports an Icon property.
+
+== JavaFX
+
+The `griffon-crystal-javafx:{project-version}` JAR provides a new Node class: `{api_link_crystalicon_javafx}`.
+You may use this class with any JavaFX control that accepts a graphic property. You may also use the icon directly as
+it is a subclass of `javafx.scene.control.Label`.
+
+== Action Resources
+
+Action icons can be set using resources files if the following format is used:
+
+[source]
+----
+iconClassName|category:name:size
+----
+
+Here's an example using the Swing icon
+
+[source,java,options="nowrap"]
+.griffon-app/i18n/messages.properties
+----
+org.example.AppController.action.Preferences.icon=griffon.swing.support.crystal.CrystalIcon|actions:configure:24
+----
+
+The JavaFX version for the same icon value is
+
+[source,java,options="nowrap"]
+.griffon-app/i18n/messages.properties
+----
+org.example.AppController.action.Preferences.icon=griffon.javafx.support.crystal.CrystalIcon|actions:configure:24
+----

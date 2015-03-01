@@ -52,5 +52,5 @@ The following nodes will become available on a Groovy View
 Both `crystalIcon` Nodes support the following properties
 
 icon:: The name of the icon, such as `actions:exec` or `fileystems:folder`.
-size:: The size of the icon. One of `16`, `22`, `32`.
+size:: The size of the icon. One of `16`, `24`, `32`.
 

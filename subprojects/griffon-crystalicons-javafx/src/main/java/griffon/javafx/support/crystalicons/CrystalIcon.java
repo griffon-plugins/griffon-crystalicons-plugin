@@ -21,14 +21,17 @@ import javafx.scene.image.Image;
 import javax.annotation.Nonnull;
 import java.net.URL;
 
+import static griffon.plugins.crystalicons.Crystal.invalidDescription;
+import static griffon.util.GriffonNameUtils.requireNonBlank;
 import static java.util.Objects.requireNonNull;
 
 /**
  * @author Andres Almiray
  */
 public class CrystalIcon extends Image {
-    private final Crystal crystal;
-    private final int size;
+    private static final String ERROR_CRYSTAL_NULL = "Argument 'crystal' must not be null.";
+    private Crystal crystal;
+    private int size;
 
     public CrystalIcon(@Nonnull Crystal crystal) {
         this(crystal, 16);
@@ -36,21 +39,44 @@ public class CrystalIcon extends Image {
 
     public CrystalIcon(@Nonnull Crystal crystal, int size) {
         super(toURL(crystal, size), true);
-        this.crystal = crystal;
+        this.crystal = requireNonNull(crystal, ERROR_CRYSTAL_NULL);
         this.size = size;
     }
 
     public CrystalIcon(@Nonnull String description) {
-        this(Crystal.findByDescription(description));
+        super(toURL(description));
+        this.crystal = Crystal.findByDescription(description);
+
+        String[] parts = description.split(":");
+        if (parts.length == 3) {
+            try {
+                size = Integer.parseInt(parts[2]);
+            } catch (NumberFormatException e) {
+                throw invalidDescription(description, e);
+            }
+        } else if (size == 0) {
+            size = 16;
+        }
     }
 
     @Nonnull
     private static String toURL(@Nonnull Crystal crystal, int size) {
-        requireNonNull(crystal, "Argument 'crystal' must not be null.");
+        requireNonNull(crystal, ERROR_CRYSTAL_NULL);
         String resource = crystal.asResource(size);
         URL url = Thread.currentThread().getContextClassLoader().getResource(resource);
         if (url == null) {
             throw new IllegalArgumentException("Icon " + crystal.formatted() + ":" + size + " does not exist");
+        }
+        return url.toExternalForm();
+    }
+
+    @Nonnull
+    private static String toURL(@Nonnull String description) {
+        requireNonBlank(description, "Argument 'description' must not be blank");
+        String resource = Crystal.asResource(description);
+        URL url = Thread.currentThread().getContextClassLoader().getResource(resource);
+        if (url == null) {
+            throw new IllegalArgumentException("Icon " + description + " does not exist");
         }
         return url.toExternalForm();
     }

@@ -7,6 +7,7 @@ include::_links.adoc[]
 
 :leveloffset: 1
 include::introduction.adoc[]
+include::usage.adoc[]
 include::configuration.adoc[]
 include::modules.adoc[]
 
