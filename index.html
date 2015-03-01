@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <meta name="author" content="Andres Almiray">
 <title>Griffon Crystal Icons Plugin</title>
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
 <body class="book toc2 toc-left">
@@ -16,31 +16,38 @@
 <h1>Griffon Crystal Icons Plugin</h1>
 <div class="details">
 <span id="author" class="author">Andres Almiray</span><br>
-<span id="revnumber">version 1.0.0</span>
+<span id="revnumber">version 1.1.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_configuration">2. Configuration</a>
+<li><a href="#_usage">2. Usage</a>
 <ul class="sectlevel2">
-<li><a href="#_gradle">2.1. Gradle</a>
+<li><a href="#_swing">2.1. Swing</a></li>
+<li><a href="#_javafx">2.2. JavaFX</a></li>
+<li><a href="#_action_resources">2.3. Action Resources</a></li>
+</ul>
+</li>
+<li><a href="#_configuration">3. Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_gradle">3.1. Gradle</a>
 <ul class="sectlevel3">
-<li><a href="#_automatic">2.1.1. Automatic</a></li>
-<li><a href="#_manual">2.1.2. Manual</a></li>
+<li><a href="#_automatic">3.1.1. Automatic</a></li>
+<li><a href="#_manual">3.1.2. Manual</a></li>
 </ul>
 </li>
-<li><a href="#_maven">2.2. Maven</a></li>
+<li><a href="#_maven">3.2. Maven</a></li>
 </ul>
 </li>
-<li><a href="#_modules">3. Modules</a>
+<li><a href="#_modules">4. Modules</a>
 <ul class="sectlevel2">
-<li><a href="#_javafx">3.1. JavaFX</a></li>
-<li><a href="#_swing">3.2. Swing</a></li>
+<li><a href="#_javafx_2">4.1. JavaFX</a></li>
+<li><a href="#_swing_2">4.2. Swing</a></li>
 </ul>
 </li>
-<li><a href="#_links">4. Links</a></li>
-<li><a href="#icon_cheat_cheet">5. Icon Cheat Sheet</a></li>
+<li><a href="#_links">5. Links</a></li>
+<li><a href="#icon_cheat_cheet">6. Icon Cheat Sheet</a></li>
 </ul>
 </div>
 </div>
@@ -54,19 +61,68 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>2. Configuration</h2>
+<h2 id="_usage"><a class="anchor" href="#_usage"></a>2. Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_swing"><a class="anchor" href="#_swing"></a>2.1. Swing</h3>
+<div class="paragraph">
+<p>The <code>griffon-crystal-swing:1.1.0</code> JAR provides a new Icon class: <code><a href="api/griffon/swing/support/crystalicons/CrystalIcon.html" target="_blank">griffon.swing.support.crystalicons.CrystalIcon</a></code>.
+You may use this class with any Swing component that supports an Icon property.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_javafx"><a class="anchor" href="#_javafx"></a>2.2. JavaFX</h3>
+<div class="paragraph">
+<p>The <code>griffon-crystal-javafx:1.1.0</code> JAR provides a new Node class: <code><a href="api/griffon/javafx/support/crystalicons/CrystalIcon.html" target="_blank">griffon.javafx.support.crystalicons.CrystalIcon</a></code>.
+You may use this class with any JavaFX control that accepts a graphic property. You may also use the icon directly as
+it is a subclass of <code>javafx.scene.control.Label</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_action_resources"><a class="anchor" href="#_action_resources"></a>2.3. Action Resources</h3>
+<div class="paragraph">
+<p>Action icons can be set using resources files if the following format is used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>iconClassName|category:name:size</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example using the Swing icon</p>
+</div>
+<div class="listingblock">
+<div class="title">griffon-app/i18n/messages.properties</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java">org.example.AppController.action.Preferences.icon=griffon.swing.support.crystal.CrystalIcon|actions:configure:<span class="integer">24</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The JavaFX version for the same icon value is</p>
+</div>
+<div class="listingblock">
+<div class="title">griffon-app/i18n/messages.properties</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java">org.example.AppController.action.Preferences.icon=griffon.javafx.support.crystal.CrystalIcon|actions:configure:<span class="integer">24</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>3. Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The plugin delivers artifacts for both Swing and JavaFX. It also contains Groovy enhancements
 that can be used in combination with the respective UI toolkit DSL (SwingBuilder and GroovyFX).</p>
 </div>
 <div class="sect2">
-<h3 id="_gradle"><a class="anchor" href="#_gradle"></a>2.1. Gradle</h3>
+<h3 id="_gradle"><a class="anchor" href="#_gradle"></a>3.1. Gradle</h3>
 <div class="paragraph">
 <p>You have two options for configuring this plugin: automatic and manual.</p>
 </div>
 <div class="sect3">
-<h4 id="_automatic"><a class="anchor" href="#_automatic"></a>2.1.1. Automatic</h4>
+<h4 id="_automatic"><a class="anchor" href="#_automatic"></a>3.1.1. Automatic</h4>
 <div class="paragraph">
 <p>As long as the project has the <code>org.codehaus.griffon.griffon</code> plugin applied to it you
 may include the following snippet in <code>build.gradle</code></p>
@@ -74,7 +130,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    griffon 'org.codehaus.griffon.plugins:griffon-crystalicons-plugin:1.0.0'
+    griffon 'org.codehaus.griffon.plugins:griffon-crystalicons-plugin:1.1.0'
 }</code></pre>
 </div>
 </div>
@@ -83,7 +139,7 @@ may include the following snippet in <code>build.gradle</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_manual"><a class="anchor" href="#_manual"></a>2.1.2. Manual</h4>
+<h4 id="_manual"><a class="anchor" href="#_manual"></a>3.1.2. Manual</h4>
 <div class="paragraph">
 <p>You will have to configure any of the following blocks depending on your setup</p>
 </div>
@@ -91,7 +147,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Java + Swing</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing:1.0.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing:1.1.0'
 }</code></pre>
 </div>
 </div>
@@ -99,7 +155,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Java + JavaFX</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx:1.0.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx:1.1.0'
 }</code></pre>
 </div>
 </div>
@@ -107,7 +163,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Groovy + Swing</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing-groovy:1.0.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing-groovy:1.1.0'
 }</code></pre>
 </div>
 </div>
@@ -115,14 +171,14 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Groovy + JavaFX</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx-groovy:1.0.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx-groovy:1.1.0'
 }</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_maven"><a class="anchor" href="#_maven"></a>2.2. Maven</h3>
+<h3 id="_maven"><a class="anchor" href="#_maven"></a>3.2. Maven</h3>
 <div class="paragraph">
 <p>First configure the <code>griffon-crystalicons-plugin</code> BOM in your POM file, by placing the following
 snippet before the <code>&lt;build&gt;</code> element</p>
@@ -134,7 +190,7 @@ snippet before the <code>&lt;build&gt;</code> element</p>
         <span class="tag">&lt;dependency&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>griffon-crystalicons-plugin<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>1.0.0<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>1.1.0<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
             <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
         <span class="tag">&lt;/dependency&gt;</span>
@@ -185,7 +241,7 @@ snippet before the <code>&lt;build&gt;</code> element</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_modules"><a class="anchor" href="#_modules"></a>3. Modules</h2>
+<h2 id="_modules"><a class="anchor" href="#_modules"></a>4. Modules</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following sections display all bindings per module. Use this information to
@@ -193,7 +249,7 @@ successfully override a binding on your own modules or to troubleshoot a module
 binding if the wrong type has been applied by the Griffon runtime.</p>
 </div>
 <div class="sect2">
-<h3 id="_javafx"><a class="anchor" href="#_javafx"></a>3.1. JavaFX</h3>
+<h3 id="_javafx_2"><a class="anchor" href="#_javafx_2"></a>4.1. JavaFX</h3>
 <div class="paragraph">
 <p>Module name: <code>crystalicons-javafx-groovy</code></p>
 </div>
@@ -230,7 +286,7 @@ binding if the wrong type has been applied by the Griffon runtime.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_swing"><a class="anchor" href="#_swing"></a>3.2. Swing</h3>
+<h3 id="_swing_2"><a class="anchor" href="#_swing_2"></a>4.2. Swing</h3>
 <div class="paragraph">
 <p>Module name: <code>crystalicons-swing-groovy</code></p>
 </div>
@@ -276,7 +332,7 @@ binding if the wrong type has been applied by the Griffon runtime.</p>
 </dd>
 <dt class="hdlist1">size</dt>
 <dd>
-<p>The size of the icon. One of <code>16</code>, <code>22</code>, <code>32</code>.</p>
+<p>The size of the icon. One of <code>16</code>, <code>24</code>, <code>32</code>.</p>
 </dd>
 </dl>
 </div>
@@ -284,7 +340,7 @@ binding if the wrong type has been applied by the Griffon runtime.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_links"><a class="anchor" href="#_links"></a>4. Links</h2>
+<h2 id="_links"><a class="anchor" href="#_links"></a>5. Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="api/index.html" target="_blank">Javadoc</a></p>
@@ -295,7 +351,7 @@ binding if the wrong type has been applied by the Griffon runtime.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="icon_cheat_cheet"><a class="anchor" href="#icon_cheat_cheet"></a>5. Icon Cheat Sheet</h2>
+<h2 id="icon_cheat_cheet"><a class="anchor" href="#icon_cheat_cheet"></a>6. Icon Cheat Sheet</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following tables show all available icons. Table names stand for categories. Note that
@@ -8669,8 +8725,8 @@ some icons are not available for all sizes.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.0<br>
-Last updated 2014-08-19 08:56:17 CDT
+Version 1.1.0<br>
+Last updated 2015-02-15 21:00:38 CET
 </div>
 </div>
 </body>
