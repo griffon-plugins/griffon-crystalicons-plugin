@@ -9,6 +9,11 @@ image:https://api.bintray.com/packages/griffon/griffon-plugins/{project-name}/im
 
 ---
 
+image:https://img.shields.io/gitter/room/griffon/griffon.js.svg[link="https://gitter.im/griffon/griffon]
+image:https://img.shields.io/badge/donations-Patreon-orange.svg[https://www.patreon.com/user?u=6609318]
+
+---
+
 Provides a shortcut for adding icons based on
 http://everaldo.com[Everaldo's Crystal icon set, window="_blank"].
 

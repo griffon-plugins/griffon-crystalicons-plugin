@@ -4,3 +4,5 @@
 
 Provides a shortcut for adding crystal icons based on {link_crystalicons}.
 
+Griffon version: {griffon-version}
+
