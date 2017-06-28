@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="generator" content="Asciidoctor 1.5.3">
 <meta name="author" content="Andres Almiray">
 <title>Griffon Crystal Icons Plugin</title>
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
 <body class="book toc2 toc-left">
@@ -16,7 +16,7 @@
 <h1>Griffon Crystal Icons Plugin</h1>
 <div class="details">
 <span id="author" class="author">Andres Almiray</span><br>
-<span id="revnumber">version 1.1.0</span>
+<span id="revnumber">version 2.0.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -59,7 +59,7 @@
 <p>Provides a shortcut for adding crystal icons based on <a href="http://everaldo.com" target="_blank">Everaldo&#8217;s Crystal icon set</a>.</p>
 </div>
 <div class="paragraph">
-<p>Griffon version: 2.2.0</p>
+<p>Griffon version: 2.11.0</p>
 </div>
 </div>
 </div>
@@ -69,14 +69,14 @@
 <div class="sect2">
 <h3 id="_swing"><a class="anchor" href="#_swing"></a>2.1. Swing</h3>
 <div class="paragraph">
-<p>The <code>griffon-crystal-swing:1.1.0</code> JAR provides a new Icon class: <code><a href="api/griffon/swing/support/crystalicons/CrystalIcon.html" target="_blank">griffon.swing.support.crystalicons.CrystalIcon</a></code>.
+<p>The <code>griffon-crystal-swing:2.0.0</code> JAR provides a new Icon class: <code><a href="api/griffon/swing/support/crystalicons/CrystalIcon.html" target="_blank">griffon.swing.support.crystalicons.CrystalIcon</a></code>.
 You may use this class with any Swing component that supports an Icon property.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_javafx"><a class="anchor" href="#_javafx"></a>2.2. JavaFX</h3>
 <div class="paragraph">
-<p>The <code>griffon-crystal-javafx:1.1.0</code> JAR provides a new Node class: <code><a href="api/griffon/javafx/support/crystalicons/CrystalIcon.html" target="_blank">griffon.javafx.support.crystalicons.CrystalIcon</a></code>.
+<p>The <code>griffon-crystal-javafx:2.0.0</code> JAR provides a new Node class: <code><a href="api/griffon/javafx/support/crystalicons/CrystalIcon.html" target="_blank">griffon.javafx.support.crystalicons.CrystalIcon</a></code>.
 You may use this class with any JavaFX control that accepts a graphic property. You may also use the icon directly as
 it is a subclass of <code>javafx.scene.control.Label</code>.</p>
 </div>
@@ -133,7 +133,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    griffon 'org.codehaus.griffon.plugins:griffon-crystalicons-plugin:1.1.0'
+    griffon 'org.codehaus.griffon.plugins:griffon-crystalicons-plugin:2.0.0'
 }</code></pre>
 </div>
 </div>
@@ -150,7 +150,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Java + Swing</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing:1.1.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing:2.0.0'
 }</code></pre>
 </div>
 </div>
@@ -158,7 +158,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Java + JavaFX</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx:1.1.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx:2.0.0'
 }</code></pre>
 </div>
 </div>
@@ -166,7 +166,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Groovy + Swing</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing-groovy:1.1.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-swing-groovy:2.0.0'
 }</code></pre>
 </div>
 </div>
@@ -174,7 +174,7 @@ may include the following snippet in <code>build.gradle</code></p>
 <div class="title">Groovy + JavaFX</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx-groovy:1.1.0'
+    compile 'org.codehaus.griffon.plugins:griffon-crystalicons-javafx-groovy:2.0.0'
 }</code></pre>
 </div>
 </div>
@@ -193,7 +193,7 @@ snippet before the <code>&lt;build&gt;</code> element</p>
         <span class="tag">&lt;dependency&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>griffon-crystalicons-plugin<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>1.1.0<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>2.0.0<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
             <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
         <span class="tag">&lt;/dependency&gt;</span>
@@ -8728,8 +8728,8 @@ some icons are not available for all sizes.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.1.0<br>
-Last updated 2015-02-15 21:00:38 CET
+Version 2.0.0<br>
+Last updated 2015-02-15 21:00:38 +01:00
 </div>
 </div>
 </body>
