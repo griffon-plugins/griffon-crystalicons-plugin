@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
         classpath 'com.bmuschko:gradle-java2html-plugin:2.0'
     }
 }
@@ -129,53 +129,55 @@ java2html {
     }
 }
 
-task generateIconCheatSheet << {
-    File rootIconDir = project(':griffon-crystalicons-core').file('src/main/resources/com/everaldo/crystal')
-    List sizes = [16, 24, 32]
-    List categories = ['actions', 'apps', 'devices', 'filesystems', 'mimetypes']
+task generateIconCheatSheet {
+    doFirst {
+        File rootIconDir = project(':griffon-crystalicons-core').file('src/main/resources/com/everaldo/crystal')
+        List sizes = [16, 24, 32]
+        List categories = ['actions', 'apps', 'devices', 'filesystems', 'mimetypes']
 
-    Map<String,Map<String,List>> data = [:]
-    for (category in categories) {
-        for (size in sizes) {
-            new File(rootIconDir, "${size}x${size}/${category}".toString()).eachFileRecurse { file ->
-                Map iconsPerCategory = data.get(category, [:])
-                List sizesPerIcon = iconsPerCategory.get(file.name - '.png', [])
-                sizesPerIcon << size
+        Map<String,Map<String,List>> data = [:]
+        for (category in categories) {
+            for (size in sizes) {
+                new File(rootIconDir, "${size}x${size}/${category}".toString()).eachFileRecurse { file ->
+                    Map iconsPerCategory = data.get(category, [:])
+                    List sizesPerIcon = iconsPerCategory.get(file.name - '.png', [])
+                    sizesPerIcon << size
+                }
             }
         }
-    }
 
-    String document = '''
-    [[icon_cheat_cheet]]
-    = Icon Cheat Sheet
+        String document = '''
+        [[icon_cheat_cheet]]
+        = Icon Cheat Sheet
 
-    The following tables show all available icons. Table names stand for categories. Note that
-    some icons are not available for all sizes.
+        The following tables show all available icons. Table names stand for categories. Note that
+        some icons are not available for all sizes.
 
-    '''.stripIndent(4)
-    data.each { category, icons ->
-        document += """
-        .${category}
-        [columns="4*", options="header"]
-        |===
-        | Name | 16 | 24 | 32
-        """.stripIndent(8)
+        '''.stripIndent(8)
+        data.each { category, icons ->
+            document += """
+            .${category}
+            [columns="4*", options="header"]
+            |===
+            | Name | 16 | 24 | 32
+            """.stripIndent(12)
 
-        icons.each { n, ss ->
-            document += "| ${n} "
-            document += ((16 in ss) ? "| image:16x16/$category/${n}.png[${n}]" : '| -')
-            document += ((24 in ss) ? "| image:24x24/$category/${n}.png[${n}]" : '| -')
-            document += ((32 in ss) ? "| image:32x32/$category/${n}.png[${n}]" : '| -')
-            document += '\n'
+            icons.each { n, ss ->
+                document += "| ${n} "
+                document += ((16 in ss) ? "| image:16x16/$category/${n}.png[${n}]" : '| -')
+                document += ((24 in ss) ? "| image:24x24/$category/${n}.png[${n}]" : '| -')
+                document += ((32 in ss) ? "| image:32x32/$category/${n}.png[${n}]" : '| -')
+                document += '\n'
+            }
+
+            document += '|===\n'
         }
 
-        document += '|===\n'
+        document += '\n\n'
+        File f = file("${buildDir}/tmp/icon-cheat-sheet.adoc")
+        f.parentFile.mkdirs()
+        f.text = document
     }
-
-    document += '\n\n'
-    File f = file("${buildDir}/tmp/icon-cheat-sheet.adoc")
-    f.parentFile.mkdirs()
-    f.text = document
 }
 
 asciidoctor {

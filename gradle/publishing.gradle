@@ -8,11 +8,20 @@ def pomConfig = {
     description project.projectDescription
     url project.projectWebsiteUrl
     inceptionYear project.projectInceptionYear
+    scm {
+        url project.projectVcsUrl
+    }
     licenses {
         license([:]) {
             name 'The Apache Software License, Version 2.0'
             url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
             distribution 'repo'
+        }
+    }
+    developers {
+        developer {
+            id 'aalmiray'
+            name 'Andres Almiray'
         }
     }
 }
@@ -22,6 +31,7 @@ publishing {
         mavenCustom(MavenPublication) {
             from components.java
             artifact sourceJar
+            artifact javadocJar
 
             pom.withXml {
                 // all dependencies should use the default scope (compile) but
@@ -32,6 +42,7 @@ publishing {
                     }
                 }
                 asNode().children().last() + pomConfig
+                asNode().appendNode('description', project.projectDescription)
             }
         }
     }
@@ -40,10 +51,11 @@ publishing {
 jar {
     manifest {
         attributes(
-            'Built-By': System.properties['user.name'],
-            'Created-By': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString(),
+            'Built-By': buildBy,
+            'Created-By': buildCreatedBy,
             'Build-Date': buildDate,
             'Build-Time': buildTime,
+            'Build-Revision': buildRevision,
             'Specification-Title': project.name,
             'Specification-Version': project.version,
             'Specification-Vendor': 'griffon-framework.org',
@@ -51,6 +63,11 @@ jar {
             'Implementation-Version': project.version,
             'Implementation-Vendor': 'griffon-framework.org'
         )
+    }
+
+    metaInf {
+        from rootProject.file('.')
+        include 'LICENSE'
     }
 }
 
